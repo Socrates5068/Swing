@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_bloquear" />
-                            <entry key="sourceFile" value="D:\UATF\2020 - 1\SIS 719\Proyecto\bloquear.svg" />
+                            <entry key="outputName" value="ic_usuario" />
+                            <entry key="sourceFile" value="D:\UATF\2020 - 1\SIS 719\Proyecto\usuario.svg" />
                           </map>
                         </option>
                       </PersistentState>
