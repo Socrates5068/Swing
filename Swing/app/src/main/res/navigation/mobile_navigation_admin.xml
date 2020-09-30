@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_inicio">
+
+    <fragment
+        android:id="@+id/navigation_inicio"
+        android:name="com.dev.socrates.swing.uiAdmin.inicio.InicioFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_navigation_home_to_crearRestFragment"
+            app:destination="@id/crearRestFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_menuVista"
+            app:destination="@id/hacerPedido" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_pedidos"
+        android:name="com.dev.socrates.swing.uiAdmin.pedidos.PedidosFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_pedidos" />
+
+    <fragment
+        android:id="@+id/navigation_ordenes"
+        android:name="com.dev.socrates.swing.uiAdmin.ordenes.OrdenesFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_ordenes" />
+    <fragment
+        android:id="@+id/crearRestFragment"
+        android:name="com.dev.socrates.swing.uiAdmin.inicio.CrearRestFragment"
+        android:label="fragment_crear_rest"
+        tools:layout="@layout/fragment_crear_rest" >
+        <action
+            android:id="@+id/action_crearRestFragment_to_navigation_home"
+            app:destination="@id/navigation_inicio" />
+    </fragment>
+    <fragment
+        android:id="@+id/hacerPedido"
+        android:name="com.dev.socrates.swing.uiAdmin.inicio.MenuVista"
+        android:label="fragment_menu_vista"
+        tools:layout="@layout/fragment_menu_vista" >
+        <action
+            android:id="@+id/action_menuVista_to_crearMenu"
+            app:destination="@id/crearMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearMenu"
+        android:name="com.dev.socrates.swing.uiAdmin.inicio.CrearMenu"
+        android:label="fragment_crear_menu"
+        tools:layout="@layout/fragment_crear_menu" >
+        <action
+            android:id="@+id/action_crearMenu_to_menuVista"
+            app:destination="@id/hacerPedido" />
+    </fragment>
+</navigation>
