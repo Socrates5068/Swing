@@ -63,4 +63,10 @@ public class CrearRestFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_crear_rest, container, false);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
 }

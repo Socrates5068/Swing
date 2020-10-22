@@ -7,15 +7,29 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.dev.socrates.swing.AdapterMenus.MenuAdapter;
+import com.dev.socrates.swing.AdapterMenus.StructMenus;
+import com.dev.socrates.swing.ApiResMenu.MenuApi;
+import com.dev.socrates.swing.ApiResMenu.onLoad;
 import com.dev.socrates.swing.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MenuVista#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MenuVista extends Fragment {
+public class MenuVista extends Fragment implements onLoad {
+    private ListView list;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +76,59 @@ public class MenuVista extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu_vista, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        list = this.getActivity().findViewById(R.id.list_menu);
+        ArrayList<StructMenus> datos = new ArrayList<>();
+        MenuApi menu = new MenuApi(this);
+        menu.loadMenu();
+    }
+
+    @Override
+    public void onJsonLoad(JSONObject data) {
+
+    }
+
+    @Override
+    public void onJsonArrayLoad(JSONArray data) {
+        ArrayList<StructMenus> datos = new ArrayList<>();
+        for (int i = 0; i<data.length(); i++){
+            StructMenus item = new StructMenus();
+            try {
+                /*if (data.getJSONObject(i).has("Nombre")) {
+                    item.setNombre(data.getJSONObject(i).getString("Nombre"));
+                } else {
+                    item.setNombre("");
+                }
+                if (data.getJSONObject(i).has("Calle")) {
+                    item.setCalle(data.getJSONObject(i).getString("Calle"));
+                } else {
+                    item.setCalle("");
+                }
+                if (data.getJSONObject(i).has("Logo")){
+                    item.setLogo(data.getJSONObject(i).getString("Logo"));
+                } else {
+                    item.setLogo("");
+                }*/
+                item.setNombre(data.getJSONObject(i).getString("Nombre"));
+                item.setDescripción(data.getJSONObject(i).getString("Descripcion"));
+                item.setPrecio(data.getJSONObject(i).getString("Precio"));
+                item.setFotoproducto(data.getJSONObject(i).getString("Fotoproducto"));
+                datos.add(item);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        MenuAdapter adapter = new MenuAdapter(datos, getContext());
+        list.setAdapter(adapter);
+    }
+
+    @Override
+    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+
     }
 }
