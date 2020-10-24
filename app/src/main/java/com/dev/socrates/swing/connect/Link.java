@@ -5,4 +5,5 @@ public class Link {
     public static String LOGIN_SERVICE = HOST + "/login";
     public static String RESTAURANT_SERVICE = HOST + "/restaurant";
     public static String MENU_SERVICE = HOST + "/menus?nombre=a&preciogt=10&preciolt=100&order=Precio,-1";
+    public static String REST_SERVICE = HOST + "/restaurant";
 }

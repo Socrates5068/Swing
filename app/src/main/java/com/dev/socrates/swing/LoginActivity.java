@@ -81,9 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(root, UserData.MSN, Toast.LENGTH_LONG).show();
                         }
                     }
-                });            }
-                    //Intent loginActivity = new Intent(root, MainMenuAdmin.class);
-                    //root.startActivity(loginActivity);
+                });
+            }
         });
     }
 }
